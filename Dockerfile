@@ -1,4 +1,4 @@
-FROM rocker/r-base:latest
+FROM rocker/tidyverse:latest
 RUN apt-get update -qq && apt-get -y --no-install-recommends install \
     libxml2-dev \
     libcairo2-dev \
@@ -19,6 +19,10 @@ RUN apt-get update && \
     
 RUN R -e "install.packages(c('purrr', 'tidyverse', 'ashr'), dependencies= T, repos= 'http://cran.rstudio.com/')"
 
-RUN apt-get update
+
+FROM bioconductor/bioconductor_docker:latest
+
+
+
 RUN R -e 'BiocManager::install(ask = F)' && R -e 'BiocManager::install("DESeq2", ask = F)'
 
