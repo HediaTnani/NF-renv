@@ -1,5 +1,5 @@
 # Set the base image to Bioconductor docker RELEASE_3_12
-FROM bioconductor/bioconductor_docker:RELEASE_3_14
+FROM bioconductor/bioconductor_docker:latest
 
 # File Author / Maintainer
 MAINTAINER Hédia Tnani
