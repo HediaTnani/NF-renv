@@ -7,5 +7,5 @@ RUN R -e "install.packages(c('purrr', 'tidyverse', 'ashr'), dependencies= T, rep
 FROM bioconductor/bioconductor_docker:latest
 
 RUN apt-get update
-RUN R -e 'BiocManager::install(ask = F)' && R -e 'BiocManager::install("DESeq2", dependencies =T, ask = F)'
+RUN R -e 'BiocManager::install(ask = F)' && R -e 'BiocManager::install("DESeq2", ask = F)'
 
