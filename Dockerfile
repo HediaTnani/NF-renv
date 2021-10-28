@@ -1,16 +1,14 @@
-FROM rocker/tidyverse:latest
+# Set the base image to Bioconductor docker RELEASE_3_12
+FROM bioconductor/bioconductor_docker:RELEASE_3_12
 
-## update system libraries
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get clean
-    
-RUN R -e "install.packages(c('purrr', 'tidyverse', 'ashr'), dependencies= T, repos= 'http://cran.rstudio.com/')"
+# File Author / Maintainer
+MAINTAINER Hédia Tnani
 
+# Default command to execute at startup of the container
+CMD R --no-save
 
-FROM bioconductor/bioconductor_docker:latest
+# Install DESeq2 and FactoMineR package  
+RUN R -e 'BiocManager::install(ask = F)' 
+RUN R -e 'BiocManager::install("DESeq2")' && RUN R -e "install.packages(c('purrr', 'tidyverse', 'ashr'), dependencies= T, repos= 'http://cran.rstudio.com/')"
 
-
-
-RUN R -e 'BiocManager::install(ask = F)' && R -e 'BiocManager::install("DESeq2", ask = F)'
 
