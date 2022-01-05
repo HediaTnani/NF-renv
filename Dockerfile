@@ -10,6 +10,6 @@ CMD R --no-save
 # Install DESeq2 and FactoMineR package  
 RUN R -e 'BiocManager::install(ask = F)' 
 RUN R -e 'BiocManager::install("DESeq2")'
-RUN R -e "install.packages(c('purrr', 'tidyverse', 'ashr'), dependencies= T, repos= 'http://cran.rstudio.com/')"
+RUN R -e "install.packages(c('purrr', 'tidyverse', 'ashr'), repos= 'http://cran.rstudio.com/')"
 
 
