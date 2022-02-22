@@ -7,7 +7,7 @@ MAINTAINER Hédia Tnani
 # Default command to execute at startup of the container
 CMD R --no-save
 
-# Install DESeq2 and FactoMineR package  
+# Install DESeq2 
 RUN R -e 'BiocManager::install(ask = F)' 
 RUN R -e 'BiocManager::install("DESeq2")'
 RUN R -e "install.packages(c('purrr', 'tidyverse', 'ashr'), repos= 'http://cran.rstudio.com/')"
